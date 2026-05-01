@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #fff8f5;
+    --on-background: #231a13;
+    --surface: #fff8f5;
+    --on-surface: #231a13;
+    --primary: #8f4e00;
+    --on-primary: #ffffff;
+    --primary-container: #ff9933;
+    --on-primary-container: #693800;
+    --secondary: #056e00;
+    --on-secondary: #ffffff;
+    --secondary-container: #8dfc75;
+    --on-secondary-container: #067500;
+    --outline: #887364;
+    --outline-variant: #dbc2b0;
+  }
+
+  * {
+    @apply border-outline-variant;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-on-surface font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary-container text-on-primary-container;
+  }
+}
+
+@layer components {
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-surface-container-high animate-pulse rounded-md;
+  }
+
+  /* Card elevation levels */
+  .card-elevation-1 {
+    @apply shadow-card hover:shadow-card-hover transition-shadow duration-300;
+  }
+
+  .card-elevation-2 {
+    @apply shadow-elevation-2;
+  }
+
+  /* Button press effect */
+  .btn-press {
+    @apply active:scale-95 transition-transform duration-150;
+  }
+
+  /* Spring animation */
+  .animate-spring {
+    @apply transition-all duration-400 ease-spring;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Material Symbols font configuration */
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+
+  .material-symbols-filled {
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+}
+
+@layer utilities {
+  /* Safe area padding for mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
