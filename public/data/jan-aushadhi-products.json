@@ -1,0 +1,242 @@
+[
+  {
+    "id": "ja-001",
+    "genericName": "Paracetamol",
+    "brandedEquivalents": [
+      { "name": "Crocin", "mrp": 30.50, "manufacturer": "GlaxoSmithKline" },
+      { "name": "Calpol", "mrp": 28.75, "manufacturer": "GSK" },
+      { "name": "Dolo 650", "mrp": 35.00, "manufacturer": "Micro Labs" }
+    ],
+    "janAushadhiPrice": 5.50,
+    "category": "Pain Relief & Fever",
+    "packSize": "15 Tablets"
+  },
+  {
+    "id": "ja-002",
+    "genericName": "Ibuprofen",
+    "brandedEquivalents": [
+      { "name": "Brufen", "mrp": 42.00, "manufacturer": "Abbott" },
+      { "name": "Ibugesic", "mrp": 38.50, "manufacturer": "Cipla" },
+      { "name": "Ibuprofen", "mrp": 35.00, "manufacturer": "Various" }
+    ],
+    "janAushadhiPrice": 8.25,
+    "category": "Pain Relief & Inflammation",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-003",
+    "genericName": "Azithromycin",
+    "brandedEquivalents": [
+      { "name": "Azithral", "mrp": 120.00, "manufacturer": "Alembic" },
+      { "name": "Zithromax", "mrp": 185.50, "manufacturer": "Pfizer" },
+      { "name": "Azee", "mrp": 98.00, "manufacturer": "Cipla" }
+    ],
+    "janAushadhiPrice": 22.50,
+    "category": "Antibiotics",
+    "packSize": "5 Tablets"
+  },
+  {
+    "id": "ja-004",
+    "genericName": "Amoxicillin",
+    "brandedEquivalents": [
+      { "name": "Augmentin", "mrp": 165.00, "manufacturer": "GSK" },
+      { "name": "Mox", "mrp": 89.50, "manufacturer": "Ranbaxy" },
+      { "name": "Novamox", "mrp": 75.00, "manufacturer": "Cipla" }
+    ],
+    "janAushadhiPrice": 18.75,
+    "category": "Antibiotics",
+    "packSize": "10 Capsules"
+  },
+  {
+    "id": "ja-005",
+    "genericName": "Metformin",
+    "brandedEquivalents": [
+      { "name": "Glycomet", "mrp": 45.00, "manufacturer": "USV" },
+      { "name": "Galvus Met", "mrp": 285.00, "manufacturer": "Novartis" },
+      { "name": "Cetapin", "mrp": 52.00, "manufacturer": "Sanofi" }
+    ],
+    "janAushadhiPrice": 12.50,
+    "category": "Diabetes Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-006",
+    "genericName": "Atorvastatin",
+    "brandedEquivalents": [
+      { "name": "Lipitor", "mrp": 245.00, "manufacturer": "Pfizer" },
+      { "name": "Tonact", "mrp": 165.00, "manufacturer": "Lupin" },
+      { "name": "Storvas", "mrp": 145.00, "manufacturer": "Ranbaxy" }
+    ],
+    "janAushadhiPrice": 18.90,
+    "category": "Cardiac Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-007",
+    "genericName": "Amlodipine",
+    "brandedEquivalents": [
+      { "name": "Norvasc", "mrp": 125.00, "manufacturer": "Pfizer" },
+      { "name": "Amlopres", "mrp": 68.00, "manufacturer": "Cipla" },
+      { "name": "Stamlo", "mrp": 72.50, "manufacturer": "Dr Reddy's" }
+    ],
+    "janAushadhiPrice": 9.75,
+    "category": "Cardiac Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-008",
+    "genericName": "Pantoprazole",
+    "brandedEquivalents": [
+      { "name": "Pantocid", "mrp": 145.00, "manufacturer": "Sun Pharma" },
+      { "name": "Pan", "mrp": 95.00, "manufacturer": "Alkem" },
+      { "name": "Pantodac", "mrp": 88.00, "manufacturer": "Zydus" }
+    ],
+    "janAushadhiPrice": 13.25,
+    "category": "Digestive Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-009",
+    "genericName": "Cetirizine",
+    "brandedEquivalents": [
+      { "name": "Zyrtec", "mrp": 65.00, "manufacturer": "Dr Reddy's" },
+      { "name": "Cetzine", "mrp": 42.00, "manufacturer": "GSK" },
+      { "name": "Okacet", "mrp": 38.50, "manufacturer": "Cipla" }
+    ],
+    "janAushadhiPrice": 7.25,
+    "category": "Allergy & Cold",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-010",
+    "genericName": "Levocetirizine",
+    "brandedEquivalents": [
+      { "name": "Allegra", "mrp": 185.00, "manufacturer": "Sanofi" },
+      { "name": "LCZ", "mrp": 75.00, "manufacturer": "Rapross" },
+      { "name": "Levosiz", "mrp": 68.00, "manufacturer": "Systopic" }
+    ],
+    "janAushadhiPrice": 11.50,
+    "category": "Allergy & Cold",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-011",
+    "genericName": "Montelukast",
+    "brandedEquivalents": [
+      { "name": "Singulair", "mrp": 245.00, "manufacturer": "MSD" },
+      { "name": "Montair", "mrp": 165.00, "manufacturer": "Cipla" },
+      { "name": "Romilast", "mrp": 145.00, "manufacturer": "Lupin" }
+    ],
+    "janAushadhiPrice": 16.75,
+    "category": "Respiratory Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-012",
+    "genericName": "Salbutamol",
+    "brandedEquivalents": [
+      { "name": "Asthalin", "mrp": 48.00, "manufacturer": "Cipla" },
+      { "name": "Ventolin", "mrp": 125.00, "manufacturer": "GSK" },
+      { "name": "Buventol", "mrp": 52.00, "manufacturer": "Zydus" }
+    ],
+    "janAushadhiPrice": 14.50,
+    "category": "Respiratory Care",
+    "packSize": "1 Inhaler (200 doses)"
+  },
+  {
+    "id": "ja-013",
+    "genericName": "Omeprazole",
+    "brandedEquivalents": [
+      { "name": "Omez", "mrp": 95.00, "manufacturer": "Dr Reddy's" },
+      { "name": "Prilosec", "mrp": 185.00, "manufacturer": "AstraZeneca" },
+      { "name": "Omecip", "mrp": 72.00, "manufacturer": "Cipla" }
+    ],
+    "janAushadhiPrice": 11.25,
+    "category": "Digestive Care",
+    "packSize": "10 Capsules"
+  },
+  {
+    "id": "ja-014",
+    "genericName": "Domperidone",
+    "brandedEquivalents": [
+      { "name": "Domstal", "mrp": 65.00, "manufacturer": "Torrent" },
+      { "name": "Vomistop", "mrp": 48.00, "manufacturer": "Cipla" },
+      { "name": "Domperi", "mrp": 42.00, "manufacturer": "Zydus" }
+    ],
+    "janAushadhiPrice": 8.90,
+    "category": "Digestive Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-015",
+    "genericName": "Diclofenac Sodium",
+    "brandedEquivalents": [
+      { "name": "Voveran", "mrp": 85.00, "manufacturer": "Novartis" },
+      { "name": "Dynapar", "mrp": 65.00, "manufacturer": "Troikaa" },
+      { "name": "Diclomol", "mrp": 58.00, "manufacturer": "Win-Medicare" }
+    ],
+    "janAushadhiPrice": 9.50,
+    "category": "Pain Relief & Inflammation",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-016",
+    "genericName": "Ranitidine",
+    "brandedEquivalents": [
+      { "name": "Rantac", "mrp": 45.00, "manufacturer": "J B Chemicals" },
+      { "name": "Aciloc", "mrp": 42.00, "manufacturer": "Cadila" },
+      { "name": "Zinetac", "mrp": 38.00, "manufacturer": "Glaxo" }
+    ],
+    "janAushadhiPrice": 7.75,
+    "category": "Digestive Care",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-017",
+    "genericName": "Metronidazole",
+    "brandedEquivalents": [
+      { "name": "Flagyl", "mrp": 55.00, "manufacturer": "Abbott" },
+      { "name": "Metrogyl", "mrp": 48.00, "manufacturer": "J B Chemicals" },
+      { "name": "Aristogyl", "mrp": 42.00, "manufacturer": "Aristo" }
+    ],
+    "janAushadhiPrice": 8.25,
+    "category": "Antibiotics",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-018",
+    "genericName": "Chlorpheniramine Maleate",
+    "brandedEquivalents": [
+      { "name": "Piriton", "mrp": 35.00, "manufacturer": "GSK" },
+      { "name": "Cetcip", "mrp": 28.00, "manufacturer": "Cipla" },
+      { "name": "Citrizine", "mrp": 22.00, "manufacturer": "Various" }
+    ],
+    "janAushadhiPrice": 5.50,
+    "category": "Allergy & Cold",
+    "packSize": "10 Tablets"
+  },
+  {
+    "id": "ja-019",
+    "genericName": "Aspirin",
+    "brandedEquivalents": [
+      { "name": "Disprin", "mrp": 25.00, "manufacturer": "Reckitt" },
+      { "name": "Ecosprin", "mrp": 35.00, "manufacturer": "USV" },
+      { "name": "Sprin", "mrp": 22.00, "manufacturer": "Zydus" }
+    ],
+    "janAushadhiPrice": 4.25,
+    "category": "Pain Relief & Blood Thinner",
+    "packSize": "14 Tablets"
+  },
+  {
+    "id": "ja-020",
+    "genericName": "Vitamin D3 (Cholecalciferol)",
+    "brandedEquivalents": [
+      { "name": "Calcirol", "mrp": 125.00, "manufacturer": "Cadila" },
+      { "name": "D-Rise", "mrp": 95.00, "manufacturer": "USV" },
+      { "name": "Arachitol", "mrp": 135.00, "manufacturer": "Abbott" }
+    ],
+    "janAushadhiPrice": 22.50,
+    "category": "Vitamins & Supplements",
+    "packSize": "4 Sachets"
+  }
+]
