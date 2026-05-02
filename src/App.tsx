@@ -8,13 +8,14 @@ import { SkeletonLoader } from './components/SkeletonLoader';
 import { ErrorCard } from './components/ErrorCard';
 import { useMedicineData } from './hooks/useMedicineData';
 import { useGeolocation } from './hooks/useGeolocation';
-import type { Medicine } from './types';
+import type { Medicine, Store } from './types';
 import { MedicinesList } from './components/MedicinesList';
 import { logSelectMedicine } from './utils/analytics';
 
 // Home Page Component
-function HomePage({ medicines, loading, error, refetch, onSelectMedicine }: {
+function HomePage({ medicines, stores, loading, error, refetch, onSelectMedicine }: {
   medicines: Medicine[];
+  stores: Store[];
   loading: boolean;
   error: string | null;
   refetch: () => void;
@@ -146,7 +147,7 @@ function HomePage({ medicines, loading, error, refetch, onSelectMedicine }: {
           <SkeletonLoader variant="map" />
         ) : (
           <StoreLocator
-            stores={[]}
+            stores={stores}
             userLocation={userLocation}
             maxStores={5}
           />
@@ -263,6 +264,7 @@ function AppContent() {
           element={
             <HomePage
               medicines={medicines}
+              stores={stores}
               loading={loading}
               error={error}
               refetch={refetch}

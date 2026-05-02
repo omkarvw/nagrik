@@ -56,7 +56,7 @@ function MapBoundsFitter({ stores }: { stores: StoreWithDistance[] }) {
   return null;
 }
 
-export function StoreLocator({ stores, userLocation: initialUserLocation, maxStores = 5 }: StoreLocatorProps) {
+export function StoreLocator({ stores = [], userLocation: initialUserLocation, maxStores = 5 }: StoreLocatorProps) {
   const [selectedStore, setSelectedStore] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(initialUserLocation);
   const [locationQuery, setLocationQuery] = useState('');
