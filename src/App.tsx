@@ -15,6 +15,7 @@ function App() {
   const { medicines, stores, loading, error, refetch } = useMedicineData();
   const { location: userLocation, loading: locationLoading, error: locationError, requestLocation } = useGeolocation();
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
+  const [activeTab, setActiveTab] = useState<'home' | 'medicines'>('home');
 
   const handleSelectMedicine = (medicine: Medicine) => {
     setSelectedMedicine(medicine);
