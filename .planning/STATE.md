@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-05-02T10:20:09.446Z"
+last_updated: "2026-05-02T10:45:00Z"
 ---
 
 # Project State
@@ -13,6 +13,12 @@ last_updated: "2026-05-02T10:20:09.446Z"
 - **Milestone:** 1 - Foundation & Data
 - **Active Phase:** Phase 13-14 - Polish & Finalization
 - **Last Updated:** 2026-05-02
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260502-md8 | Fix medicine search to return related/fuzzy matches instead of exact matches, and replace the native category dropdown with a searchable custom dropdown component | 2026-05-02 | 463b6d6 | [260502-md8-fix-medicine-search-to-return-related-fu](./quick/260502-md8-fix-medicine-search-to-return-related-fu/) |
 
 ## Completed Phases
 
