@@ -62,7 +62,7 @@
 
   /* Spring animation */
   .animate-spring {
-    @apply transition-all duration-400 ease-spring;
+    @apply transition-all duration-300 ease-spring;
   }
 
   /* Hide scrollbar but keep functionality */

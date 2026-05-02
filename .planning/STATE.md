@@ -2,7 +2,7 @@
 
 ## Current Status
 - **Milestone:** 1 - Foundation & Data
-- **Active Phase:** Phase 2 - Data Collection - Products
+- **Active Phase:** Phase 4-7 - Core UI Components
 - **Last Updated:** 2026-05-02
 
 ## Completed Phases
@@ -12,12 +12,21 @@
   - Plus Jakarta Sans font added
   - Folder structure created
   - Build passing
+- ✅ Phase 2: Data Collection - Products (COMMIT: b35d232)
+  - Created sample products dataset (20 medicines)
+  - Included branded equivalents with MRP
+  - Saved to /public/data/jan-aushadhi-products.json
+- ✅ Phase 3: Data Collection - Stores (COMMIT: b35d232)
+  - Created sample stores dataset (25 locations)
+  - Includes lat/lon coordinates for mapping
+  - Saved to /public/data/jan-aushadhi-stores.json
 
 ## In Progress
-- Phase 2: Data Collection - Products
-  - Need to scrape janaushadhi.gov.in/product-list
-  - Parse into JSON structure
-  - Save to /public/data/jan-aushadhi-products.json
+- Phase 4-7: Core UI Components
+  - Medicine search with autocomplete
+  - Medicine comparison display
+  - Store locator with map
+  - Share savings feature
 
 ## Pending Phases
 - Phase 3: Data Collection - Stores
