@@ -2,7 +2,7 @@
 
 ## Current Status
 - **Milestone:** 1 - Foundation & Data
-- **Active Phase:** Phase 4-7 - Core UI Components
+- **Active Phase:** Phase 13-14 - Polish & Finalization
 - **Last Updated:** 2026-05-02
 
 ## Completed Phases
@@ -20,27 +20,21 @@
   - Created sample stores dataset (25 locations)
   - Includes lat/lon coordinates for mapping
   - Saved to /public/data/jan-aushadhi-stores.json
-
-## In Progress
-- Phase 4-7: Core UI Components
+- ✅ Phases 4-7: Core UI Components (COMMIT: bb0dbc2)
   - Medicine search with autocomplete
   - Medicine comparison display
   - Store locator with map
   - Share savings feature
+  - Skeleton loaders and error states
+  - Comprehensive README
 
-## Pending Phases
-- Phase 3: Data Collection - Stores
-- Phase 4: Design System & Layout
-- Phase 5: Shared Components
-- Phase 6: Medicine Search with Autocomplete
-- Phase 7: Medicine Comparison Cards
-- Phase 8: Geolocation & Distance Calculation
-- Phase 9: Leaflet Map Integration
-- Phase 10: Store List View
-- Phase 11: Share Savings Canvas
-- Phase 12: Deep Linking & URL State
-- Phase 13: Offline Support & Service Worker
-- Phase 14: Final Polish & README
+## In Progress
+- Phase 13-14: Final Polish
+  - Service worker for offline support (optional)
+  - Final testing and optimization
+
+## Pending
+- Expand dataset with more medicines and stores
 
 ## Key Decisions
 - Using React 18 + Vite + TypeScript
