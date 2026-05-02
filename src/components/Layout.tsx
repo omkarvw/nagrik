@@ -2,9 +2,11 @@ import { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;
+  activeTab?: 'home' | 'medicines';
+  onTabChange?: (tab: 'home' | 'medicines') => void;
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, activeTab = 'home', onTabChange }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Top Navigation */}
@@ -15,18 +17,24 @@ export function Layout({ children }: LayoutProps) {
               Nagrik
             </span>
             <nav className="hidden md:flex items-center gap-6">
-              <a
-                className="text-primary font-semibold"
-                href="/"
+              <button
+                onClick={() => onTabChange?.('home')}
+                className={`font-semibold transition-colors ${
+                  activeTab === 'home' ? 'text-primary' : 'text-on-surface-variant hover:bg-surface-container'
+                } px-3 py-1 rounded-lg`}
               >
                 Home
-              </a>
-              <a
-                className="text-on-surface-variant hover:bg-surface-container transition-colors duration-300 px-3 py-1 rounded-lg"
-                href="#medicines"
+              </button>
+              <button
+                onClick={() => onTabChange?.('medicines')}
+                className={`transition-colors px-3 py-1 rounded-lg ${
+                  activeTab === 'medicines'
+                    ? 'text-primary bg-orange-50'
+                    : 'text-on-surface-variant hover:bg-surface-container'
+                }`}
               >
                 Medicines
-              </a>
+              </button>
               <a
                 className="text-on-surface-variant hover:bg-surface-container transition-colors duration-300 px-3 py-1 rounded-lg"
                 href="#stores"
@@ -49,20 +57,24 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Bottom Navigation (Mobile) */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-6 px-4 bg-white/90 backdrop-blur-lg border-t border-outline-variant shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
-        <a
-          className="flex flex-col items-center justify-center text-primary-container bg-orange-50 rounded-xl px-3 py-1"
-          href="/"
+        <button
+          onClick={() => onTabChange?.('home')}
+          className={`flex flex-col items-center justify-center rounded-xl px-3 py-1 ${
+            activeTab === 'home' ? 'text-primary-container bg-orange-50' : 'text-on-surface-variant'
+          }`}
         >
           <span className="material-symbols-outlined text-xl">home</span>
           <span className="text-[10px] font-medium mt-0.5">Home</span>
-        </a>
-        <a
-          className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-container transition-all"
-          href="#medicines"
+        </button>
+        <button
+          onClick={() => onTabChange?.('medicines')}
+          className={`flex flex-col items-center justify-center rounded-xl px-3 py-1 ${
+            activeTab === 'medicines' ? 'text-primary-container bg-orange-50' : 'text-on-surface-variant'
+          }`}
         >
           <span className="material-symbols-outlined text-xl">pill</span>
           <span className="text-[10px] font-medium mt-0.5">Medicines</span>
-        </a>
+        </button>
         <a
           className="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-container transition-all"
           href="#stores"

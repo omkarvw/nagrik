@@ -29,17 +29,40 @@ function App() {
   };
 
   return (
-    <Layout>
+    <Layout activeTab={activeTab} onTabChange={setActiveTab}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-12">
-        {/* Hero Section */}
-        <section className="text-center mb-8 md:mb-12">
-          <h1 className="font-display-lg text-display-lg text-on-surface mb-3 md:mb-4">
-            Jan Aushadhi Medicine Portal
-          </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto px-4">
-            Find affordable generic medicine alternatives and save up to 90% on your healthcare expenses.
-          </p>
-        </section>
+        {activeTab === 'medicines' ? (
+          // Medicines List View
+          <section className="mb-8 md:mb-16">
+            <div className="flex items-center justify-between mb-6">
+              <h1 className="font-display-lg text-display-lg text-on-surface">
+                All Medicines
+              </h1>
+              <button
+                onClick={() => setActiveTab('home')}
+                className="text-primary font-label-lg flex items-center gap-1"
+              >
+                <span className="material-symbols-outlined">arrow_back</span>
+                Back to Home
+              </button>
+            </div>
+            {loading ? (
+              <SkeletonLoader variant="comparison" />
+            ) : (
+              <MedicinesList medicines={medicines} onSelect={handleSelectMedicine} />
+            )}
+          </section>
+        ) : (
+          <>
+            {/* Hero Section */}
+            <section className="text-center mb-8 md:mb-12">
+              <h1 className="font-display-lg text-display-lg text-on-surface mb-3 md:mb-4">
+                Jan Aushadhi Medicine Portal
+              </h1>
+              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto px-4">
+                Find affordable generic medicine alternatives and save up to 90% on your healthcare expenses.
+              </p>
+            </section>
 
         {/* Search Section */}
         <section className="mb-8 md:mb-12">
@@ -187,25 +210,27 @@ function App() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-outline-variant pt-8 pb-24 md:pb-8">
-          <div className="text-center">
-            <p className="font-label-sm text-on-surface-variant">
-              Data sourced from{' '}
-              <a
-                href="https://janaushadhi.gov.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Jan Aushadhi Portal
-              </a>
-            </p>
-            <p className="font-label-sm text-on-surface-variant mt-2">
-              © 2024 Jan Aushadhi Medicine Savings Portal. Built for public welfare.
-            </p>
-          </div>
-        </footer>
+            {/* Footer */}
+            <footer className="border-t border-outline-variant pt-8 pb-24 md:pb-8">
+              <div className="text-center">
+                <p className="font-label-sm text-on-surface-variant">
+                  Data sourced from{' '}
+                  <a
+                    href="https://janaushadhi.gov.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Jan Aushadhi Portal
+                  </a>
+                </p>
+                <p className="font-label-sm text-on-surface-variant mt-2">
+                  © 2024 Jan Aushadhi Medicine Savings Portal. Built for public welfare.
+                </p>
+              </div>
+            </footer>
+          </>
+        )}
       </div>
     </Layout>
   );
