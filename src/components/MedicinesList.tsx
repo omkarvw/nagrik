@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import type { Medicine } from '../types';
 import { calculateSavings, formatCurrency, formatPercentage } from '../utils/search';
+import { CategoryDropdown } from './CategoryDropdown';
 
 interface MedicinesListProps {
   medicines: Medicine[];
@@ -45,17 +46,12 @@ export function MedicinesList({ medicines, onSelect }: MedicinesListProps) {
               className="w-full px-4 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-on-surface placeholder:text-outline/50 outline-none focus:border-primary"
             />
           </div>
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-on-surface outline-none focus:border-primary cursor-pointer"
-          >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
+          <CategoryDropdown
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelect={setSelectedCategory}
+            placeholder="Filter by category..."
+          />
         </div>
         <p className="text-on-surface-variant font-label-sm mt-2">
           Showing {filteredMedicines.length} of {medicines.length} medicines
