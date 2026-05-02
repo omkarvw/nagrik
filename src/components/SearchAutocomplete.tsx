@@ -113,7 +113,7 @@ export function SearchAutocomplete({
             onFocus={() => {
               if (suggestions.length > 0) setShowSuggestions(true);
             }}
-            className="flex-1 border-none focus:ring-0 bg-transparent py-3 md:py-4 text-headline-md font-headline-md placeholder:text-outline/50 outline-none"
+            className="flex-1 border-none focus:ring-0 bg-transparent py-3 md:py-4 text-body-lg md:text-headline-md font-body-md md:font-headline-md placeholder:text-outline/50 outline-none min-w-0"
             placeholder={placeholder}
             aria-label="Search medicines"
             aria-expanded={showSuggestions}
@@ -145,9 +145,11 @@ export function SearchAutocomplete({
                 }
               }
             }}
-            className="ml-2 bg-primary hover:bg-surface-tint text-on-primary px-4 md:px-8 py-2 md:py-3 rounded-xl font-label-lg btn-press shadow-[0_2px_0_0_rgba(0,0,0,0.1)]"
+            className="ml-2 bg-primary hover:bg-surface-tint text-on-primary px-3 md:px-8 py-2 md:py-3 rounded-xl font-label-lg btn-press shadow-[0_2px_0_0_rgba(0,0,0,0.1)] flex items-center gap-1 flex-shrink-0"
+            aria-label="Search"
           >
-            Search
+            <span className="material-symbols-outlined text-xl">search</span>
+            <span className="hidden md:inline">Search</span>
           </button>
         </div>
 

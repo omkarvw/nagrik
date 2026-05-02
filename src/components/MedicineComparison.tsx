@@ -1,4 +1,4 @@
-import { useMemo, useRef, useCallback } from 'react';
+import { useMemo, useRef, useCallback, useState } from 'react';
 import type { Medicine } from '../types';
 import { calculateSavings, getAverageBrandedPrice, formatCurrency } from '../utils/search';
 import { logShareSavings } from '../utils/analytics';
@@ -10,6 +10,7 @@ interface MedicineComparisonProps {
 
 export function MedicineComparison({ medicine, onShare }: MedicineComparisonProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [showBrandedModal, setShowBrandedModal] = useState(false);
   const savings = useMemo(() => calculateSavings(medicine), [medicine]);
   const avgBrandedPrice = useMemo(() => getAverageBrandedPrice(medicine), [medicine]);
 
@@ -103,13 +104,7 @@ export function MedicineComparison({ medicine, onShare }: MedicineComparisonProp
               <span className="material-symbols-outlined text-outline">medication</span>
             </div>
 
-            <div className="w-full h-32 md:h-48 bg-surface-container-high rounded-lg mb-4 md:mb-6 flex items-center justify-center">
-              <span className="material-symbols-outlined text-5xl md:text-6xl text-outline-variant">
-                medical_services
-              </span>
-            </div>
-
-            <h2 className="font-headline-md text-headline-md mb-2">
+            <h2 className="font-headline-md text-headline-md mb-2 mt-2">
               {medicine.brandedEquivalents[0]?.name || 'Branded Equivalent'}
             </h2>
 
@@ -140,7 +135,10 @@ export function MedicineComparison({ medicine, onShare }: MedicineComparisonProp
           </div>
 
           <div className="bg-surface-container px-4 md:px-8 py-4 border-t border-outline-variant">
-            <button className="w-full py-3 bg-white border border-outline text-on-surface font-label-lg text-label-lg rounded-xl hover:bg-surface transition-colors">
+            <button
+              onClick={() => setShowBrandedModal(true)}
+              className="w-full py-3 bg-white border border-outline text-on-surface font-label-lg text-label-lg rounded-xl hover:bg-surface transition-colors"
+            >
               View Branded Options
             </button>
           </div>
@@ -179,16 +177,7 @@ export function MedicineComparison({ medicine, onShare }: MedicineComparisonProp
               </span>
             </div>
 
-            <div className="w-full h-32 md:h-48 bg-primary-container/10 rounded-lg mb-4 md:mb-6 flex items-center justify-center border-2 border-dashed border-primary-container/30">
-              <div className="text-center">
-                <span className="material-symbols-outlined text-4xl md:text-5xl text-primary mb-2">
-                  local_pharmacy
-                </span>
-                <p className="font-label-sm text-primary">Jan Aushadhi</p>
-              </div>
-            </div>
-
-            <h2 className="font-headline-md text-headline-md mb-2">{medicine.genericName} (Generic)</h2>
+            <h2 className="font-headline-md text-headline-md mb-2 mt-2">{medicine.genericName} (Generic)</h2>
 
             <p className="font-body-md text-body-md text-on-surface-variant mb-4 md:mb-6">
               {medicine.genericName} {medicine.packSize}. Government quality assured, identical therapeutic value.
@@ -223,6 +212,53 @@ export function MedicineComparison({ medicine, onShare }: MedicineComparisonProp
           </div>
         </div>
       </div>
+
+      {/* Branded Options Modal */}
+      {showBrandedModal && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowBrandedModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-md w-full p-6 shadow-elevation-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-headline-md text-headline-md">Branded Options</h3>
+              <button
+                onClick={() => setShowBrandedModal(false)}
+                className="p-2 hover:bg-surface-container rounded-full transition-colors"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
+            <p className="text-on-surface-variant mb-4">
+              {medicine.genericName} ({medicine.packSize})
+            </p>
+            <div className="space-y-3">
+              {medicine.brandedEquivalents.map((brand) => (
+                <div
+                  key={brand.name}
+                  className="flex justify-between items-center p-3 bg-surface-container-low rounded-xl"
+                >
+                  <span className="font-body-md">{brand.name}</span>
+                  <span className="font-label-lg text-on-surface-variant">
+                    {formatCurrency(brand.mrp)}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-outline-variant">
+              <div className="flex justify-between items-center p-3 bg-secondary-container rounded-xl">
+                <span className="font-label-lg text-on-secondary-container">Jan Aushadhi</span>
+                <span className="font-label-lg text-secondary">
+                  {formatCurrency(medicine.janAushadhiPrice)}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
