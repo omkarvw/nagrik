@@ -1,0 +1,18 @@
+{
+  "project": {
+    "name": "Jan Aushadhi Medicine Savings Portal",
+    "version": "1.0.0",
+    "created_at": "2026-05-02"
+  },
+  "workflow": {
+    "auto_commit": true,
+    "require_uat": true,
+    "test_before_commit": false
+  },
+  "model_profile": "inherit",
+  "preferences": {
+    "ui_framework": "react",
+    "styling": "tailwind",
+    "language": "typescript"
+  }
+}
