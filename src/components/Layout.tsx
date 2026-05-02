@@ -44,10 +44,13 @@ export function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="pb-24 md:pb-8">{children}</main>
+      <main className="pb-32 md:pb-8">{children}</main>
 
       {/* Bottom Navigation (Mobile) */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-6 px-4 bg-white/90 backdrop-blur-lg border-t border-outline-variant shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
+      <nav
+        className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 px-4 bg-white/90 backdrop-blur-lg border-t border-outline-variant shadow-[0_-8px_30px_rgba(0,0,0,0.04)]"
+        style={{ paddingBottom: 'max(24px, env(safe-area-inset-bottom))' }}
+      >
         <NavLink
           to="/"
           className={({ isActive }) =>
