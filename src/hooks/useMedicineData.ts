@@ -25,8 +25,8 @@ export function useMedicineData(): UseMedicineDataReturn {
 
     try {
       const [productsResponse, storesResponse] = await Promise.all([
-        fetch('/data/jan-aushadhi-products.json'),
-        fetch('/data/jan-aushadhi-stores.json'),
+        fetch('./data/jan-aushadhi-products.json'),
+        fetch('./data/jan-aushadhi-stores.json'),
       ]);
 
       if (!productsResponse.ok) {

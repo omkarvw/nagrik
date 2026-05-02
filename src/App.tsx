@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { SearchAutocomplete } from './components/SearchAutocomplete';
 import { MedicineComparison } from './components/MedicineComparison';
@@ -13,13 +13,12 @@ import { MedicinesList } from './components/MedicinesList';
 import { logSelectMedicine } from './utils/analytics';
 
 // Home Page Component
-function HomePage({ medicines, stores, loading, error, refetch, onSelectMedicine }: {
+function HomePage({ medicines, stores, loading, error, refetch }: {
   medicines: Medicine[];
   stores: Store[];
   loading: boolean;
   error: string | null;
   refetch: () => void;
-  onSelectMedicine: (medicine: Medicine) => void;
 }) {
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
   const { location: userLocation, loading: locationLoading, error: locationError, requestLocation } = useGeolocation();
@@ -268,7 +267,6 @@ function AppContent() {
               loading={loading}
               error={error}
               refetch={refetch}
-              onSelectMedicine={handleSelectMedicine}
             />
           }
         />
@@ -290,9 +288,9 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppContent />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
