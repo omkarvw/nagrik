@@ -56,8 +56,12 @@ function MapBoundsFitter({ stores }: { stores: StoreWithDistance[] }) {
   return null;
 }
 
-export function StoreLocator({ stores, userLocation, maxStores = 5 }: StoreLocatorProps) {
+export function StoreLocator({ stores, userLocation: initialUserLocation, maxStores = 5 }: StoreLocatorProps) {
   const [selectedStore, setSelectedStore] = useState<string | null>(null);
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(initialUserLocation);
+  const [locationQuery, setLocationQuery] = useState('');
+  const [isSearchingLocation, setIsSearchingLocation] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
 
   // Calculate distances and sort
   const storesWithDistance = useMemo(() => {
@@ -87,16 +91,113 @@ export function StoreLocator({ stores, userLocation, maxStores = 5 }: StoreLocat
     setSelectedStore(storeId);
   }, []);
 
+  // Search for a location using Nominatim (OpenStreetMap)
+  const searchLocation = useCallback(async (query: string) => {
+    if (!query.trim()) return;
+
+    setIsSearchingLocation(true);
+    setLocationError(null);
+
+    try {
+      // Nominatim geocoding API - free but has rate limits (1 request/sec)
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', India')}&limit=1`,
+        { headers: { 'Accept-Language': 'en' } }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to search location');
+      }
+
+      const data = await response.json();
+
+      if (data && data.length > 0) {
+        const result = data[0];
+        setUserLocation({
+          lat: parseFloat(result.lat),
+          lon: parseFloat(result.lon),
+        });
+      } else {
+        setLocationError('Location not found. Please try a different search.');
+      }
+    } catch (err) {
+      setLocationError('Failed to search location. Please try again.');
+    } finally {
+      setIsSearchingLocation(false);
+    }
+  }, []);
+
+  // Reset to current GPS location
+  const resetToCurrentLocation = useCallback(() => {
+    if (initialUserLocation) {
+      setUserLocation(initialUserLocation);
+      setLocationQuery('');
+      setLocationError(null);
+    }
+  }, [initialUserLocation]);
+
+  // Location Search UI
+  const renderLocationSearch = () => (
+    <div className="bg-surface-container-low rounded-xl p-4 border border-outline-variant mb-4">
+      <label className="font-label-lg text-on-surface block mb-2">
+        Search stores near:
+      </label>
+      <div className="flex gap-2">
+        <div className="flex-1 relative">
+          <input
+            type="text"
+            value={locationQuery}
+            onChange={(e) => setLocationQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && searchLocation(locationQuery)}
+            placeholder="Enter city or area (e.g., Mumbai, Delhi)"
+            className="w-full px-4 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-on-surface placeholder:text-outline/50 outline-none focus:border-primary"
+          />
+        </div>
+        <button
+          onClick={() => searchLocation(locationQuery)}
+          disabled={isSearchingLocation || !locationQuery.trim()}
+          className="px-4 py-3 bg-primary text-on-primary rounded-xl font-label-lg btn-press disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+        >
+          {isSearchingLocation ? (
+            <span className="animate-spin">⟳</span>
+          ) : (
+            <span className="material-symbols-outlined">search</span>
+          )}
+          <span className="hidden sm:inline">Search</span>
+        </button>
+        {initialUserLocation && (
+          <button
+            onClick={resetToCurrentLocation}
+            className="px-4 py-3 bg-surface-container text-on-surface border border-outline-variant rounded-xl font-label-lg btn-press flex items-center gap-2"
+            title="Use my current location"
+          >
+            <span className="material-symbols-outlined">my_location</span>
+            <span className="hidden sm:inline">My Location</span>
+          </button>
+        )}
+      </div>
+      {locationError && (
+        <p className="text-error font-label-sm mt-2">{locationError}</p>
+      )}
+      <p className="text-on-surface-variant font-label-sm mt-2">
+        Tip: Enter your city, area, or pincode to find nearby stores
+      </p>
+    </div>
+  );
+
   if (!userLocation) {
     return (
-      <div className="bg-error-container rounded-xl p-6 border border-outline-variant">
-        <div className="flex items-center gap-3">
-          <span className="material-symbols-outlined text-error">location_off</span>
-          <div>
-            <h3 className="font-label-lg text-on-surface">Location Required</h3>
-            <p className="font-body-md text-on-surface-variant">
-              Please enable location access to find nearby stores.
-            </p>
+      <div>
+        {renderLocationSearch()}
+        <div className="bg-error-container rounded-xl p-6 border border-outline-variant">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-error">location_off</span>
+            <div>
+              <h3 className="font-label-lg text-on-surface">No Location Set</h3>
+              <p className="font-body-md text-on-surface-variant">
+                Search for a location above or enable location access to find nearby stores.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -104,10 +205,13 @@ export function StoreLocator({ stores, userLocation, maxStores = 5 }: StoreLocat
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Store List */}
-      <div className="lg:col-span-1 space-y-3 order-2 lg:order-1">
-        <h3 className="font-headline-md text-headline-md mb-4">Nearest Stores</h3>
+    <div>
+      {renderLocationSearch()}
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Store List */}
+        <div className="lg:col-span-1 space-y-3 order-2 lg:order-1">
+          <h3 className="font-headline-md text-headline-md mb-4">Nearest Stores</h3>
 
         {storesWithDistance.length === 0 ? (
           <div className="bg-surface-container rounded-xl p-6 border border-outline-variant">
@@ -219,5 +323,6 @@ export function StoreLocator({ stores, userLocation, maxStores = 5 }: StoreLocat
         </div>
       </div>
     </div>
+  </div>
   );
 }

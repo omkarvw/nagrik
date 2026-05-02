@@ -8,6 +8,7 @@ import { ErrorCard } from './components/ErrorCard';
 import { useMedicineData } from './hooks/useMedicineData';
 import { useGeolocation } from './hooks/useGeolocation';
 import type { Medicine } from './types';
+import { MedicinesList } from './components/MedicinesList';
 import { logSelectMedicine } from './utils/analytics';
 
 function App() {
@@ -180,7 +181,7 @@ function App() {
               Nationwide Network
             </h3>
             <p className="font-body-md text-on-surface-variant">
-              Over 10,000 Jan Aushadhi Kendras across India ensuring accessibility in urban and rural areas.
+              Over 18,000 Jan Aushadhi Kendras across India ensuring accessibility in urban and rural areas.
             </p>
           </div>
         </section>

@@ -41,14 +41,6 @@ export function Layout({ children }: LayoutProps) {
               </a>
             </nav>
           </div>
-          <div className="flex items-center gap-2 md:gap-4">
-            <button className="p-2 text-on-surface-variant hover:bg-surface-container rounded-full btn-press">
-              <span className="material-symbols-outlined">search</span>
-            </button>
-            <button className="p-2 text-on-surface-variant hover:bg-surface-container rounded-full btn-press">
-              <span className="material-symbols-outlined">account_circle</span>
-            </button>
-          </div>
         </div>
       </header>
 
